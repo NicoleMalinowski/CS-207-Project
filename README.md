@@ -2,4 +2,4 @@
 Fill in later 
 
 
-![](CatapultLoadedPosition)
+![](CatapultLoadedPosition.jpg)
