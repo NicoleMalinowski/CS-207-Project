@@ -3,3 +3,6 @@ Fill in later
 
 
 ![](CatapultLoadedPosition.jpg)
+
+
+![](CatapultReleased.jpg)
