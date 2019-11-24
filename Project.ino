@@ -10,6 +10,7 @@
         Blue LED from absolute zero to blue2green threshold
         Green LED from blue2gree threshold to green2launch threshold 
         Red LED for anything above green2launch threshold
+        * Note that thresholds are in celcius
 
   The servo position of 0 is assocaited with a released catapult
   The servo position of 90 is associated with holding the catapult down.
@@ -26,7 +27,7 @@
       Temperature sensor has three prongs. Set up with flat side with writing closer to Arduino.
       Left prong (when looking at writing on sensor) goes to 5 volts
       Middle prong goes to analog pin 0
-      Right prong goes to a 10,000 ohm resister then to ground
+      Right prong goes to ground
    For servo:
       Servo has three coloured wires (yellow, red, and brown)
       Yellow wire goes to digital pin 9
@@ -59,9 +60,11 @@ const int buttonPin = 2;  //button used to move servo to lock position
 int buttonState = 0;  //initial state of button
 //Adjust this threshold as necessary.
 // When button is clicked to reset servo is sometimes causes spike in temp sensor readings so the threshold needs to be more than a few numbers above the normal room temp
-int blue2green = 186; // threshold to change LED from blue to green
-int green2launch = 189; //threshold value of sensor at which the catapult launches and LED changes from green to red (change this to fit your needs)
-int temp;  // value read in from temperature sensor
+// thresholds are in celcius
+int blue2green = 20; // threshold to change LED from blue to green
+int green2launch = 22; //threshold value of sensor at which the catapult launches and LED changes from green to red (change this to fit your needs)
+int tempSensor;  // value read in from temperature sensor
+float celcius; 
 
 Servo myservo;  // create a servo object to control a servo
 int position = 0; //servo starts at neutral position
@@ -83,26 +86,27 @@ void setup() {
 
 void loop() {
   buttonState = digitalRead(buttonPin); //read value of button
-  temp = analogRead(tempPin);
-  Serial.print(temp);
+  tempSensor = analogRead(tempPin);
+  celcius = (tempSensor/1023.00*5.00*100.00)-50.00; 
+  Serial.print(celcius);
   Serial.println();
 
 // changing light to green if above the threshold
-if (temp > blue2green) { 
+if (celcius > blue2green) { 
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, HIGH);
     digitalWrite(bluePin, LOW);
   }
 
 // if temperature falls back into blue LED zone then switch back. 
-if (temp < blue2green) { 
+if (celcius < blue2green) { 
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, LOW);
     digitalWrite(bluePin, HIGH);
   }
 
 // launch catapult and change LED to red if abive threshold
-  if (temp > green2launch) { //if pressure sensor value is above threshold...
+  if (celcius > green2launch) { //if pressure sensor value is above threshold...
     myservo.write(0); //...move servo back to neutral position
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, LOW);
