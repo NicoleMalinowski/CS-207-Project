@@ -4,7 +4,12 @@
   CS 207 Project
   Fall 2019
 
-  This code is for a catapult that launches if the temperature read is above some threshold.
+  This code is for a temperature sensing catapult that launches when it gets warm. There is also a colour changing LED that gives you a warning when the cataoult is going to launch. 
+  The LED starts at blue, changes to green as a warning, then to red when the cataoult launches. 
+  Temperature zone are: 
+        Blue LED from absolute zero to blue2green threshold
+        Green LED from blue2gree threshold to green2launch threshold 
+        Red LED for anything above green2launch threshold
 
   The servo position of 0 is assocaited with a released catapult
   The servo position of 90 is associated with holding the catapult down.
@@ -44,17 +49,18 @@
 
 
 
-//set up colour changing LED pins and temp sensor pin
+//set up colour changing LED pins and temp sensor and button pin
 const int redPin = 11;
 const int greenPin = 12;
 const int bluePin = 13;
 int tempPin = 0;
+const int buttonPin = 2;  //button used to move servo to lock position
 
-const int buttonPin = 2;  //button used to move servo to lock position, attached to digital input 2
 int buttonState = 0;  //initial state of button
 //Adjust this threshold as necessary.
 // When button is clicked to reset servo is sometimes causes spike in temp sensor readings so the threshold needs to be more than a few numbers above the normal room temp
-int threshold = 189; //threshold value of sensor at which the catapult launches (change this to fit your needs)
+int blue2green = 186; // threshold to change LED from blue to green
+int green2launch = 189; //threshold value of sensor at which the catapult launches and LED changes from green to red (change this to fit your needs)
 int temp;  // value read in from temperature sensor
 
 Servo myservo;  // create a servo object to control a servo
@@ -81,17 +87,31 @@ void loop() {
   Serial.print(temp);
   Serial.println();
 
+// changing light to green if above the threshold
+if (temp > blue2green) { 
+    digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, HIGH);
+    digitalWrite(bluePin, LOW);
+  }
 
+// if temperature falls back into blue LED zone then switch back. 
+if (temp < blue2green) { 
+    digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, HIGH);
+  }
 
-  if (temp > threshold) { //if pressure sensor value is above threshold...
+// launch catapult and change LED to red if abive threshold
+  if (temp > green2launch) { //if pressure sensor value is above threshold...
     myservo.write(0); //...move servo back to neutral position
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, LOW);
     digitalWrite(bluePin, LOW);
   }
 
-  if (buttonState == HIGH) { //if button pressed...
-    myservo.write(90); //...move servo 90 degrees (change this number to fit your personal use)
+// Reset cataoult with button
+  if (buttonState == HIGH) { 
+    myservo.write(90); 
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, LOW);
     digitalWrite(bluePin, HIGH);
