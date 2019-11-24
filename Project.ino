@@ -15,7 +15,7 @@
  * Wiring: 
  * For push button: 
  *    On one side of button have 5 volts
- *    On other side of button (same side of breadboard) have 10,000 ohm resister to ground
+ *    On other side of button  (same side of breadboard) have 10,000 ohm resister to ground
  *    On other side of button (opposite side of breadboard) have wire to didgital pin 2
  * For temperature sensor: 
  *    Temperature sensor has three prongs. Set up with flat side with writing closer to Arduino. 
@@ -38,6 +38,9 @@
 #include <Servo.h>
 
 const int buttonPin = 2;  //button used to move servo to lock position, attached to digital input 2
+const int redPin = 11;
+const int greenPin = 12;
+const int bluePin = 13;
 int tempPin = 0; 
 int buttonState = 0;  //initial state of button
 //Adjust this threshold as necessary.
@@ -53,6 +56,12 @@ void setup() {
 Serial.begin(9600); //display serial input (reads pressure sensor value - adjust threshold accordingly)
 pinMode(buttonPin, INPUT); //make the button pin an input pin
 myservo.attach(9); //servo attached to pin 9 to hold/fire catapult
+pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, HIGH);
 }
 
 void loop() {
@@ -65,10 +74,16 @@ Serial.println();
 
 if(temp > threshold) { //if pressure sensor value is above threshold...
 myservo.write(0); //...move servo back to neutral position 
+digitalWrite(redPin, HIGH);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, LOW);
 }
 
 if(buttonState == HIGH) { //if button pressed...
 myservo.write(90); //...move servo 90 degrees (change this number to fit your personal use)
+    digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, HIGH);
 }
 
 
