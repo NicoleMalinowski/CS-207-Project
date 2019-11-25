@@ -16,6 +16,7 @@ As well as having a catapult launch there is also a colour changing LED in the c
 ## Set Up 
 
 This project is written for an Arduino Uno. Download the Project.ino code and set up breadboard as in diagram below.
+In my build I used a 10,000 ohm resistor for the button but Fritzing did not have one available for my diagrams. 
 
 ![](Breadboard.jpg)
 
