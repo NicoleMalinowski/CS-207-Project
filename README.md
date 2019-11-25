@@ -19,7 +19,7 @@ This project is written for an Arduino Uno. Download the Project.ino code and se
 
 ![](Project Breadboard.jpg)
 
-1[](Project Schematic.jpg)
+![](Project Schematic.jpg)
 
 
 ![](CatapultLoadedPosition.jpg)
