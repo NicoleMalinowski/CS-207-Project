@@ -13,8 +13,17 @@ As well as having a catapult launch there is also a colour changing LED in the c
 - Wires for connections (17 in total)
 - K'nex or some other building materials for the catapult
 
+## Set Up 
+
+This project is written for an Arduino Uno. Download the Project.ino code and set up breadboard as in diagram below.
+
+![](Project Breadboard.jpg)
+
+1[](Project Schematic.jpg)
+
 
 ![](CatapultLoadedPosition.jpg)
 
 
 ![](CatapultReleased.jpg)
+
