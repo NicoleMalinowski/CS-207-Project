@@ -17,9 +17,9 @@ As well as having a catapult launch there is also a colour changing LED in the c
 
 This project is written for an Arduino Uno. Download the Project.ino code and set up breadboard as in diagram below.
 
-![](Project Breadboard.jpg)
+![](Breadboard.jpg)
 
-![](Project Schematic.jpg)
+![](Schematic.jpg)
 
 
 ![](CatapultLoadedPosition.jpg)
