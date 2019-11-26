@@ -23,23 +23,23 @@ The code has two thresholds. The first one is to turn the LED from blue to green
   The threshold to change the LED from green to red as well as release the catapult is an integer called green2launch which is declared and inialized on line 65. 
 Change these thresholds as you need and change from an integer to a float if you want a threshold that has a decimal. 
 
-![](Breadboard.jpg)
+![Breadboard Diagram](Breadboard.jpg)
 
-![](Schematic.jpg)
+![Schematic](Schematic.jpg)
 
 ## Photos of Built Project 
 
 This is what the project looks like when the catapult it loaded and waiting to launch. Note the servo arm holding the catapult down. 
 
 
-![](Loaded.jpg)
+![Loaded Catpult](Loaded.jpg)
 
 This is a better view of the servo arm when the catapult is loaded. Also, note the orange blocks that keep the catapult arm from aligned underneath the servo arm. Without these blocks the grey catapult arm can swing out from underneath the servo arm. 
 
 
-![](ServoLoadedPosition.jpg)
+![Loaded catoult with focus on orange blocks holding catapult arm in place](ServoLoadedPosition.jpg)
 
 This is what the catapult looks like after it has been released. Notice the servo arm has now moved. 
 
-![](ReleasedPosition.jpg)
-![](ServoReleasedPosition.jpg)
+![Catapult in Released Position](ReleasedPosition.jpg)
+![Catapult in Released Position](ServoReleasedPosition.jpg)
