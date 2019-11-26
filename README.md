@@ -11,7 +11,7 @@ As well as having a catapult launch there is also a colour changing LED in the c
 - Push button 
 - Resister (I used a 10,000 ohm one)
 - Wires for connections (17 in total)
-- K'nex or some other building materials for the catapult
+- K'nex or some other building materials for the catapult. I used an elastic for the tension to make it launch. 
 
 ## Set Up 
 
@@ -27,9 +27,14 @@ Change these thresholds as you need and change from an integer to a float if you
 
 ![](Schematic.jpg)
 
+## Photos of Built Project 
 
-![](CatapultLoadedPosition.jpg)
+This is what the project looks like when the catapult it loaded and waiting to launch. Note the servo arm holding the catapult down. 
+![](Loaded.jpg)
 
+This is a better view of the servo arm when the catapult is loaded. Also, note the orange blocks that keep the catapult arm from aligned underneath the servo arm. Without these blocks the grey catapult arm can swing out from underneath the servo arm. 
+![](ServoLoadedPosition.jpg)
 
-![](CatapultReleased.jpg)
-
+This is what the catapult looks like after it has been released. Notice the servo arm has now moved. 
+![](ReleasedPosition.jpg)
+![](ServoReleasedPosition.jpg)
