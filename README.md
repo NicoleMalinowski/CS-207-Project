@@ -30,11 +30,16 @@ Change these thresholds as you need and change from an integer to a float if you
 ## Photos of Built Project 
 
 This is what the project looks like when the catapult it loaded and waiting to launch. Note the servo arm holding the catapult down. 
+
+
 ![](Loaded.jpg)
 
 This is a better view of the servo arm when the catapult is loaded. Also, note the orange blocks that keep the catapult arm from aligned underneath the servo arm. Without these blocks the grey catapult arm can swing out from underneath the servo arm. 
+
+
 ![](ServoLoadedPosition.jpg)
 
 This is what the catapult looks like after it has been released. Notice the servo arm has now moved. 
+
 ![](ReleasedPosition.jpg)
 ![](ServoReleasedPosition.jpg)
