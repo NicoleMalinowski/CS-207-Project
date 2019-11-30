@@ -20,7 +20,7 @@
 
    Wiring:
    For push button:
-      On one side of button have 5 volts
+      On one side of button have 5 volts connected to flyback diode to button
       On other side of button  (same side of breadboard) have 10,000 ohm resister to ground
       On other side of button (opposite side of breadboard) have wire to didgital pin 2
    For temperature sensor:
