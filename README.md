@@ -9,6 +9,7 @@ As well as having a catapult launch there is also a colour changing LED in the c
 - RGB LED 
 - Temperature sensor
 - Push button 
+- Diode
 - Resister (I used a 10,000 ohm one)
 - Wires for connections (17 in total)
 - K'nex or some other building materials for the catapult. I used an elastic for the tension to make it launch. 
