@@ -11,7 +11,7 @@
         Green LED from blue2gree threshold to green2launch threshold 
         Red LED for anything above green2launch threshold
         * Note that thresholds are in celcius
-        * Note that thresholds when temperature are decreasing are 0.5 degrees less so light is stable
+        * Note that thresholds when temperature are decreasing are stability variable degrees less so light is stable
 
   The servo position of 0 is assocaited with a released catapult
   The servo position of 90 is associated with holding the catapult down.
@@ -65,8 +65,9 @@ int buttonState = 0;  //initial state of button
 int blue2green = 20; // threshold to change LED from blue to green
 int green2launch = 22; //threshold value of sensor at which the catapult launches and LED changes from green to red (change this to fit your needs)
 int tempSensor;  // value read in from temperature sensor
-float celcius; 
-float celciusOld; 
+float celcius;
+//adjust stability for thresholds as needed. When temp is decreasing it must be stability degrees less than threshold to change.  
+float stability =0.5; ; 
 
 Servo myservo;  // create a servo object to control a servo
 int position = 0; //servo starts at neutral position
@@ -89,20 +90,19 @@ void setup() {
 void loop() {
   buttonState = digitalRead(buttonPin); //read value of button
   tempSensor = analogRead(tempPin);
-  celciusOld = celcius; 
   celcius = (tempSensor/1023.00*5.00*100.00)-50.00; 
   Serial.print(celcius);
   Serial.println();
 
 // changing light to green if above the threshold
-if (celcius > blue2green and celcius<green2launch-0.5) { 
+if (celcius > blue2green and celcius<green2launch-stability) { 
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, HIGH);
     digitalWrite(bluePin, LOW);
   }
 
 // if temperature falls back into blue LED zone then switch back. 
-if (celcius < blue2green-0.5) { 
+if (celcius < blue2green-stability) { 
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, LOW);
     digitalWrite(bluePin, HIGH);
