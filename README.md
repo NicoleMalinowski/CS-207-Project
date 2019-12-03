@@ -24,9 +24,8 @@ The code has two thresholds. The first one is to turn the LED from blue to green
   The threshold to change the LED from green to red as well as release the catapult is an integer called green2launch which is declared and inialized on line 65. 
 Change these thresholds as you need and change from an integer to a float if you want a threshold that has a decimal. 
 
-![Breadboard Diagram](Breadboard.jpg)
 
-![Schematic](Schematic.jpg)
+
 
 ## Photos of Built Project 
 
