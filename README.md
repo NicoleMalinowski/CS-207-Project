@@ -19,7 +19,7 @@ As well as having a catapult launch there is also a colour changing LED in the c
 This project is written for an Arduino Uno. Download the Project.ino code and set up breadboard as in diagram below.
 In my build I used a 10,000 ohm resistor for the button but Fritzing did not have one available for my diagrams. 
 
-The code has two thresholds. The first one is to turn the LED from blue to green. The second one (which is set higher) is to change the LED to red and launch the catapult. 
+The code has two thresholds. The first one is to turn the LED from blue to green. The second one (which is set higher) is to change the LED to red and launch the catapult. Note readings from the temperature sensor are conveerted ti Celsius and not Fahrenheit. 
   The threshold to change the LED from blue to green is an integer called blue2green and is declared and initalized on line 64. 
   The threshold to change the LED from green to red as well as release the catapult is an integer called green2launch which is declared and inialized on line 65. 
 Change these thresholds as you need and change from an integer to a float if you want a threshold that has a decimal. 
