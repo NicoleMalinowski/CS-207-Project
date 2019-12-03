@@ -50,6 +50,15 @@
 #include <Servo.h>
 
 
+// Variables that user may need to change depending on preferance 
+// Thresholds are in celcius
+int blue2green = 21; // threshold to change LED from blue to green (lower threshold)
+int green2launch = 22; //threshold value of sensor at which the catapult launches and LED changes from green to red  (higher threshold)
+// Adjust stability for thresholds as needed. When temp is decreasing it must be stability degrees less than threshold to change. 
+// This is to avoid a coloured strobe light effect to happen if the temperature hovers around one of the thresholds. 
+// Needs to be a positive number smaller than the difference between the two thresholds. 
+float stability =0.2; ; 
+
 
 //set up colour changing LED pins and temp sensor and button pin
 const int redPin = 11;
@@ -59,15 +68,9 @@ int tempPin = 0;
 const int buttonPin = 2;  //button used to move servo to lock position
 
 int buttonState = 0;  //initial state of button
-//Adjust this threshold as necessary.
-// When button is clicked to reset servo is sometimes causes spike in temp sensor readings so the threshold needs to be more than a few numbers above the normal room temp
-// thresholds are in celcius
-int blue2green = 20; // threshold to change LED from blue to green
-int green2launch = 22; //threshold value of sensor at which the catapult launches and LED changes from green to red (change this to fit your needs)
 int tempSensor;  // value read in from temperature sensor
-float celcius;
-//adjust stability for thresholds as needed. When temp is decreasing it must be stability degrees less than threshold to change.  
-float stability =0.5; ; 
+float celcius; // converted temperature from sensor
+
 
 Servo myservo;  // create a servo object to control a servo
 int position = 0; //servo starts at neutral position
@@ -119,9 +122,6 @@ if (celcius < blue2green-stability) {
 // Reset cataoult with button
   if (buttonState == HIGH) { 
     myservo.write(90); 
-    digitalWrite(redPin, LOW);
-    digitalWrite(greenPin, LOW);
-    digitalWrite(bluePin, HIGH);
   }
 
 
