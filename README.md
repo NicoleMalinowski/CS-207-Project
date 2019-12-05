@@ -23,7 +23,12 @@ The code has two thresholds. The first one is to turn the LED from blue to green
   The threshold to change the LED from blue to green is an integer called blue2green. 
   The threshold to change the LED from green to red as well as release the catapult is an integer called green2launch. 
 Change these thresholds as you need and change from an integer to a float if you want a threshold that has a decimal. 
-As well, there is a stability variable that you may want to change. The stability variable exists so that if the temperature is hovering right around a threshold the LED does not rapidly change colours as the temperature bounces just above and just below the threshold. When the temperature is increasing it must be above the threshold. However, when the temperature is decreasing it must be below the threshold minus the stability variable. For example if the lower threshold was set to 20 degrees and the stability variable is set to 0.2, then the LED will change from blue to green at 20 degrees and will change from green to blue at 20 - 0.2 = 19.8 degrees. 
+
+
+As well, there is a stability variable that you may want to change. The stability variable exists so that if the temperature is hovering right around a threshold the LED does not rapidly change colours as the temperature bounces just above and just below the threshold. When the temperature is increasing it must be above the threshold. However, when the temperature is decreasing it must be below the threshold minus the stability variable. For example if the lower threshold was set to 20 degrees and the stability variable is set to 0.2, then the LED will change from blue to green at 20 degrees and will change from green to blue at 20 - 0.2 = 19.8 degrees. Note that the stability variable should be a positive value that is smaller than the difference between the two thresholds. 
+
+
+## Schematic and Breadboard Diagrams 
 
 ![](Schematic.jpg)
 
